@@ -24,7 +24,7 @@ export const useNewsCatcher = () => {
    */
   const searchNews = useCallback(async (query, params = {}) => {
     const result = await searchApi.execute(query, params);
-    if (result && result.articles) {
+    if (result?.articles) {
       setNews(result.articles);
     }
     return result;
@@ -37,7 +37,7 @@ export const useNewsCatcher = () => {
    */
   const getLatestHeadlines = useCallback(async (params = {}) => {
     const result = await headlinesApi.execute(params);
-    if (result && result.articles) {
+    if (result?.articles) {
       setNews(result.articles);
     }
     return result;
