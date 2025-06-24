@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { COLORS } from '../../utils/constants';
 
@@ -9,7 +10,7 @@ const cardStyles = css`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
@@ -20,14 +21,14 @@ const cardStyles = css`
 const cardVariants = {
   default: css`
     padding: 40px;
-    
+
     @media (max-width: 600px) {
       padding: 20px;
     }
   `,
   compact: css`
     padding: 20px;
-    
+
     @media (max-width: 600px) {
       padding: 15px;
     }
@@ -36,7 +37,7 @@ const cardVariants = {
     padding: 40px;
     border-radius: 0;
     box-shadow: none;
-    
+
     @media (max-width: 600px) {
       padding: 20px;
     }
@@ -44,7 +45,7 @@ const cardVariants = {
   elevated: css`
     padding: 40px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    
+
     @media (max-width: 600px) {
       padding: 20px;
     }
@@ -53,7 +54,7 @@ const cardVariants = {
     padding: 40px;
     box-shadow: none;
     border: 1px solid #e0e0e0;
-    
+
     @media (max-width: 600px) {
       padding: 20px;
     }
@@ -143,7 +144,16 @@ const Card = ({
   );
 };
 
-// Exportar componentes
+// Validación de props
+Card.propTypes = {
+  variant: PropTypes.oneOf(['default', 'compact', 'borderless', 'elevated', 'outlined']),
+  fullWidth: PropTypes.bool,
+  maxWidth: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  children: PropTypes.node,
+};
+
+// Exportar componentes secundarios
 Card.Header = CardHeader;
 Card.Body = CardBody;
 Card.Footer = CardFooter;
