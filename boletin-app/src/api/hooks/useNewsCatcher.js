@@ -60,7 +60,7 @@ export const useNewsCatcher = () => {
    */
   const getSimilarNews = useCallback(async (url, params = {}) => {
     const result = await similarApi.execute(url, params);
-    if (result && result.articles) {
+    if (result?.articles) {
       setNews(result.articles);
     }
     return result;
